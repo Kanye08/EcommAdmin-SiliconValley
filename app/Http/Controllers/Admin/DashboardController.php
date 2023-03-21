@@ -9,7 +9,8 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\User;
 use App\Models\Product;
-// use App\Models\Order;
+use App\Models\Order;
+use App\Models\Task;
 
 class DashboardController extends Controller
 {
@@ -18,6 +19,14 @@ class DashboardController extends Controller
         $totalProducts = Product::count();
         $totalBrands = Brand::count();
         $totalCategories = Category::count();
+        $totalOrders = Order::count();
+        $totalCompletedOrders = Order::where('status_message', 'completed')->count();
+        $totalPendingOrders = Order::where('status_message', 'pending')->count();
+        $totalTasks = Task::count();
+        $totalPendingTasks = Task::where('status', 'pending')->count();
+        $totalCompletedTasks = Task::where('status', 'completed')->count();
+        $totalInprogressTasks = Task::where('status', 'in progress')->count();
+        $totalUrgentTasks = Task::where('status', 'urgent')->count();
 
         $totalAllUsers = User::count();
         $totalUsers = User::where('role_as', '0')->count();
@@ -28,21 +37,22 @@ class DashboardController extends Controller
         $thisYear = Carbon::now()->format('Y');
 
 
-        // $totalOrder = Order::count();
-        // $todayOrder = Order::whereDate('created_at', '$todayDate')->count();
-        // $thisMonthOrder = Order::whereMonth('created_at', '$thisMonth')->count();
-        // $thisYearOrder = Order::whereYear('created_at', '$thisYear')->count();
+
 
 
         return view('admin.dashboard', compact(
             'totalAllUsers',
             'totalUsers',
             'totalAdmin',
-            // 'totalOrder',
-            // 'todayOrder',
-            // 'thisMonthOrder',
-            // 'thisYearOrder',
+            'totalOrders',
             'totalProducts',
+            'totalPendingOrders',
+            'totalCompletedOrders',
+            'totalTasks',
+            'totalPendingTasks',
+            'totalCompletedTasks',
+            'totalInprogressTasks',
+            'totalUrgentTasks',
             'totalBrands',
             'totalCategories'
         ));
