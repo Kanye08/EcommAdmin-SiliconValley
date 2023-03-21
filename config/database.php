@@ -35,6 +35,21 @@ return [
 
     'connections' => [
 
+        'cleardb' => [
+            'driver' => 'mysql',
+            'host' => 'us-cdbr-east-06.cleardb.net',
+            'port' => '3306',
+            'database' => 'heroku_7f8f57638f4491f',
+            'username' => 'b50f516e10318d',
+            'password' => 'a24ddacd',
+            'unix_socket' => env('DB_SOCKET', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
+        ],
+
         'sqlite' => [
             'driver' => 'sqlite',
             'url' => env('DATABASE_URL'),
