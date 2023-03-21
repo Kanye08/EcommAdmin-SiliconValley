@@ -18,7 +18,7 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-    <link rel="manifest" href="{{ asset('manifest.json') }}">
+    <!-- <link rel="manifest" href="{{ asset('manifest.json') }}"> -->
 
 
     <!-- Scripts -->

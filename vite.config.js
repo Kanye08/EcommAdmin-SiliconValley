@@ -8,7 +8,7 @@ export default defineConfig({
             refresh: true,
         }),
     ],
-    build: {
-        manifest: true
-      }
+    // build: {
+    //     manifest: true
+    //   }
 });
