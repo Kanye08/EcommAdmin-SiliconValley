@@ -25,6 +25,12 @@
                             </a>
                         </li>
 
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url('/chatify')}}">
+                                <i class="fa fa-comment"></i> Helpdesk
+                            </a>
+                        </li>
+
 
                         @guest
                         @if (Route::has('login'))

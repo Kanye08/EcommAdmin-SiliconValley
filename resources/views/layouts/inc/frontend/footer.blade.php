@@ -37,7 +37,7 @@
                         </p>
                     </div>
                     <div class="mb-2">
-                        <a href="" class="text-white">
+                        <a href="{{url('chat')}}" class="text-white">
                             <i class="fa fa-phone"></i> +44 888-XXX-XXXX
                         </a>
                     </div>

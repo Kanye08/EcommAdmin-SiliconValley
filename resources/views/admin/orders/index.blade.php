@@ -16,16 +16,14 @@
                     <div class="row">
                         <div class="col-md-3">
                             <label for="">Filter by Date</label>
-                            <input type="date" name="date" value="{{Request::get('date') ?? date('Y-m-d')}}"
-                                class="form-control">
+                            <input type="date" name="date" value="{{Request::get('date') ?? date('Y-m-d')}}" class="form-control">
                         </div>
 
                         <div class="col-md-3">
                             <label for="">Filter by Status</label>
                             <select name="status" class="form-select">
                                 <option value="">Select All Status</option>
-                                <option value="in progress"
-                                    {{Request::get('status') == 'in progress' ? 'selected' : ''}}>
+                                <option value="in progress" {{Request::get('status') == 'in progress' ? 'selected' : ''}}>
                                     In progress
                                 </option>
                                 <option value="completed" {{Request::get('status') == 'completed' ? 'selected' : ''}}>
@@ -33,10 +31,9 @@
                                 <option value="pending" {{Request::get('status') == 'pending' ? 'selected' : ''}}>
                                     Pending
                                 </option>
-                                <option value="cancelled" {{Request::get('status') == 'cancelled' ? 'selected' : ''}}>
-                                    Cancelled</option>
-                                <option value="out-for-delivery"
-                                    {{Request::get('status') == 'out-for-delivery' ? 'selected' : ''}}>Out for
+                                <option value="refund" {{Request::get('status') == 'refund' ? 'selected' : ''}}>
+                                    Refund</option>
+                                <option value="out-for-delivery" {{Request::get('status') == 'out-for-delivery' ? 'selected' : ''}}>Out for
                                     delivery</option>
                             </select>
                         </div>

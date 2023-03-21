@@ -2,11 +2,23 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Events\Message;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 
 
 Route::get('/', function () {
     return view('auth.login');
+});
+
+// chat integration
+Route::get('/chat', function () {
+    return view('chat');
+});
+Route::post('/chat/send-message', function (Request $request) {
+    event(new Message($request->input('username'), $request->input('message')));
+    return ["success" => true];
 });
 
 Auth::routes();
@@ -67,6 +79,19 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
 
         // brands
         Route::get('/brands', App\Http\Livewire\Admin\Brand\Index::class);
+
+        // Task routes
+        Route::controller(App\Http\Controllers\Admin\TaskController::class)->group(function () {
+            Route::get('/tasks', 'index');
+            Route::get('/tasks/create', 'create');
+            Route::post('/tasks', 'store');
+            Route::get('/tasks/{task_id}/edit', 'edit');
+            Route::put('/tasks/{task_id}', 'update');
+            Route::get('/tasks/generate', 'generateTask');
+        });
+
+        // search
+        Route::get('/search', [App\Http\Controllers\Admin\SearchController::class, 'search']);
 
 
         // user controller

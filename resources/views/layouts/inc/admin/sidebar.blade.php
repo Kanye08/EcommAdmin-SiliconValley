@@ -43,6 +43,13 @@
         </li>
 
         <li class="nav-item">
+            <a class="nav-link" href="{{url('admin/tasks')}}">
+                <i class="mdi mdi-grid-large menu-icon"></i>
+                <span class="menu-title">Tasks</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
             <a class="nav-link" href="{{url('/admin/users')}}">
                 <i class="mdi mdi-file-document-box-outline menu-icon"></i>
                 <span class="menu-title">Manage Users</span>

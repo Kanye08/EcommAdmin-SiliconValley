@@ -47,6 +47,7 @@
     <script src="{{asset('assets/js/jquery-3.6.3.min.js')}}"></script>
 
     @livewireScripts
+    @stack('scripts')
 </body>
 
 </html>

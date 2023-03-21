@@ -12,23 +12,18 @@ class OrderController extends Controller
 {
     public function index(Request $request)
     {
-        // $todayDate = '2023-03-13';  //Carbon::now();
-        // $orders = Order::whereDate('created_at', $todayDate)->paginate(10);
 
-        $todayDate = Carbon::now()->format('Y-m-d');
-        $orders = Order::when($request->date != null, function ($q) use ($request) {
+        $orders = Order::query();
 
-            return $q->whereDate('created_at', $request->date);
-        }, function ($q) use ($todayDate) {
+        if ($request->date != null) {
+            $orders->whereDate('created_at', $request->date);
+        }
 
-            return $q->whereDate('created_at', $todayDate);
-        })
-            ->when($request->status != null, function ($q) use ($request) {
+        if ($request->status != null) {
+            $orders->where('status_message', 'LIKE', '%' . $request->status . '%');
+        }
 
-                return $q->where('status_message', 'LIKE', '%' . $request->status . '%');
-            })
-            ->paginate(10);
-
+        $orders = $orders->paginate(10);
 
         return view('admin.orders.index', compact('orders'));
     }

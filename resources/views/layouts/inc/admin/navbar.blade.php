@@ -12,7 +12,14 @@
         </div>
     </div>
     <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
-        <ul class="navbar-nav mr-lg-4 w-100">
+        <form class="d-flex w-100 " method="GET" action="{{url('admin/search')}}" role="search">
+
+            <input class="form-control w-80 me-2" name="query" type="search" placeholder="Search" aria-label="Search">
+
+
+            <button class="btn btn-sm btn-primary float-end" type="submit">Search</button>
+        </form>
+        <!-- <ul class="navbar-nav mr-lg-4 w-100">
             <li class="nav-item nav-search d-none d-lg-block w-100">
                 <div class="input-group">
                     <div class="input-group-prepend">
@@ -24,10 +31,11 @@
                         aria-describedby="search">
                 </div>
             </li>
-        </ul>
+        </ul> -->
         <ul class="navbar-nav navbar-nav-right">
-            <li class="nav-item dropdown me-1">
-                <a class="nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center"
+            <!-- <li class="nav-item dropdown me-1">
+                <a 
+                    class="nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center"
                     id="messageDropdown" href="#" data-bs-toggle="dropdown">
                     <i class="mdi mdi-message-text mx-0"></i>
                     <span class="count"></span>
@@ -71,8 +79,8 @@
                         </div>
                     </a>
                 </div>
-            </li>
-            <li class="nav-item dropdown me-4">
+            </li> -->
+            <!-- <li class="nav-item dropdown me-4">
                 <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center notification-dropdown"
                     id="notificationDropdown" href="#" data-bs-toggle="dropdown">
                     <i class="mdi mdi-bell mx-0"></i>
@@ -120,18 +128,20 @@
                         </div>
                     </a>
                 </div>
-            </li>
+            </li> -->
             <li class="nav-item nav-profile dropdown">
                 <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="profileDropdown">
                     <img src="images/faces/face5.jpg" alt="profile" />
                     <span class="nav-profile-name">{{ Auth::user()->name }}</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-                    <!-- <a class="dropdown-item">
-                        <i class="mdi mdi-settings text-primary"></i>
-                        Settings
-                    </a> -->
+
+                    <a class="dropdown-item" href="{{ route('chatify') }}">
+                        <i class="mdi mdi-comment text-primary"></i>
+                        Helpdesk
+                    </a>
                     <!-- integrating logout -->
+
                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                              document.getElementById('logout-form').submit();">
                         <i class="mdi mdi-logout text-primary"></i>
@@ -144,8 +154,7 @@
                 </div>
             </li>
         </ul>
-        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
-            data-toggle="offcanvas">
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
             <span class="mdi mdi-menu"></span>
         </button>
     </div>

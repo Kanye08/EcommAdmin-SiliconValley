@@ -10,10 +10,12 @@
             <div class="card-header">
                 <h3> Order Details
                     <a href="{{url('admin/orders')}}" class="btn btn-primary btn-sm float-end"> Back</a>
-                    <a href="{{url('admin/invoice/'.$order->id.'/generate')}}" class="btn btn-success btn-sm float-end mx-1">
+                    <a href="{{url('admin/invoice/'.$order->id.'/generate')}}"
+                        class="btn btn-success btn-sm float-end mx-1">
                         Download
                         Invoice</a>
-                    <a href="{{url('admin/invoice/'.$order->id)}}" target="_blank" class="btn btn-warning mx-1 btn-sm float-end">
+                    <a href="{{url('admin/invoice/'.$order->id)}}" target="_blank"
+                        class="btn btn-warning mx-1 btn-sm float-end">
                         View Invoice</a>
                 </h3>
 
@@ -34,7 +36,8 @@
                         <h6>Tracking Id: {{$order->tracking_no}}</h6>
                         <h6>Ordered Date: {{$order->created_at->format('d-m-Y h:i A')}}</h6>
                         <h6>Payment Mode: {{$order->payment_code}}</h6>
-                        <h6 class="border p-2 text-success">Order Status Message: <span class="text-uppercase">{{$order->status_message}}</span></h6>
+                        <h6 class="border p-2 text-success">Order Status Message: <span
+                                class="text-uppercase">{{$order->status_message}}</span></h6>
                     </div>
 
                     <div class="col-md-6">
@@ -73,7 +76,8 @@
                                     <td width="10%">{{$orderItem->id}}</td>
                                     <td width="10%">
                                         @if($orderItem->product->productImages)
-                                        <img src="{{asset($orderItem->product->productImages[0]->image)}}" style="width: 50px; height: 50px" alt="">
+                                        <img src="{{asset($orderItem->product->productImages[0]->image)}}"
+                                            style="width: 50px; height: 50px" alt="">
                                         {{$orderItem->name}}
                                         @else
                                         <img src="" style="width: 50px; height: 50px" alt="">
@@ -124,17 +128,20 @@
                             <div class="input-group">
                                 <select name="order_status" class="form-select">
                                     <option value="">Select Order Status</option>
-                                    <option value="in progress" {{Request::get('status') == 'in progress' ? 'selected' : ''}}>
+                                    <option value="in progress"
+                                        {{Request::get('status') == 'in progress' ? 'selected' : ''}}>
                                         In progress
                                     </option>
-                                    <option value="completed" {{Request::get('status') == 'completed' ? 'selected' : ''}}>
+                                    <option value="completed"
+                                        {{Request::get('status') == 'completed' ? 'selected' : ''}}>
                                         Completed</option>
                                     <option value="pending" {{Request::get('status') == 'pending' ? 'selected' : ''}}>
                                         Pending
                                     </option>
-                                    <option value="cancelled" {{Request::get('status') == 'cancelled' ? 'selected' : ''}}>
-                                        Cancelled</option>
-                                    <option value="out-for-delivery" {{Request::get('status') == 'out-for-delivery' ? 'selected' : ''}}>Out for
+                                    <option value="refund" {{Request::get('status') == 'refund' ? 'selected' : ''}}>
+                                        Refund</option>
+                                    <option value="out-for-delivery"
+                                        {{Request::get('status') == 'out-for-delivery' ? 'selected' : ''}}>Out for
                                         delivery</option>
                                 </select>
 
@@ -147,7 +154,8 @@
                     <div class="col-md-7">
                         <br>
 
-                        <h4 class="mt-3">Current Order Status: <span class="text-uppercase">{{$order->status_message}}</span></h4>
+                        <h4 class="mt-3">Current Order Status: <span
+                                class="text-uppercase">{{$order->status_message}}</span></h4>
                     </div>
                 </div>
             </div>
